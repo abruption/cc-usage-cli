@@ -1,6 +1,6 @@
 {
   "name": "cc-usage-cli",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Real-time Claude Code subscription rate-limit dashboard — reads OAuth credentials locally and probes the Anthropic API for current 5h/7d utilization.",
   "type": "module",
   "types": "dist/src/main.d.ts",
