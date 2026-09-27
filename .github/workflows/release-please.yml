@@ -29,35 +29,35 @@ jobs:
       - uses: actions/setup-node@v7
         if: ${{ steps.release.outputs.release_created }}
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
-          cache: npm
+          package-manager-cache: false
 
+      - if: ${{ steps.release.outputs.release_created }}
+        run: npm install --global npm@11.5.1
       - if: ${{ steps.release.outputs.release_created }}
         run: npm ci
       - if: ${{ steps.release.outputs.release_created }}
         run: npm test
       - if: ${{ steps.release.outputs.release_created }}
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
 
   publish-manual:
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
     permissions:
+      contents: read
       id-token: write
     steps:
       - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
-          cache: npm
+          package-manager-cache: false
 
+      - run: npm install --global npm@11.5.1
       - run: npm ci
       - run: npm test
-      - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish --access public
