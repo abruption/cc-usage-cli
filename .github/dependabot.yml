@@ -5,6 +5,11 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    ignore:
+      # Keep TypeScript within typescript-eslint's supported peer range.
+      # Remove this restriction when typescript-eslint supports newer versions.
+      - dependency-name: typescript
+        versions: [">=6.1.0"]
     labels:
       - dependencies
     commit-message:
