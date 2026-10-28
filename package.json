@@ -1,7 +1,7 @@
 {
   "name": "cc-usage-cli",
   "version": "1.1.1",
-  "description": "Real-time Claude Code subscription rate-limit dashboard — reads OAuth credentials locally and probes the Anthropic API for current 5h/7d utilization.",
+  "description": "Real-time Claude Code subscription rate-limit dashboard \u2014 reads OAuth credentials locally and probes the Anthropic API for current 5h/7d utilization.",
   "type": "module",
   "types": "dist/src/main.d.ts",
   "bin": {
@@ -14,10 +14,11 @@
     "pretest": "tsc",
     "test": "node --test dist/test/unit.test.js",
     "start": "tsc && node dist/src/main.js",
-    "prepack": "tsc"
+    "prepack": "tsc",
+    "test:pack": "npm run build && node --test dist/test/package.test.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": "^22.23.4 || ^24.22.1"
   },
   "files": [
     "dist/src/**/*.js",
