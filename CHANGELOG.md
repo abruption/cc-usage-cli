@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/abruption/cc-usage-cli/compare/v1.1.1...v2.0.0) (2026-10-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **security:** patch brace-expansion and supported Node baselines ([#13](https://github.com/abruption/cc-usage-cli/issues/13))
+
+### Bug Fixes
+
+* **security:** patch brace-expansion and supported Node baselines ([#13](https://github.com/abruption/cc-usage-cli/issues/13)) ([24cba16](https://github.com/abruption/cc-usage-cli/commit/24cba1681f385c98b079314084a62e3df79abdf0))
+
 ## [1.1.1](https://github.com/abruption/cc-usage-cli/compare/v1.1.0...v1.1.1) (2026-10-26)
 
 
