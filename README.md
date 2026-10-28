@@ -22,6 +22,9 @@ Reads your local OAuth credentials, sends a minimal Haiku probe (free — includ
 
 ## Install
 
+Use a supported, security-patched Node.js runtime: **22.23.4+ within 22.x** or
+**24.22.1+ within 24.x**. Prefer the latest patch of either supported line.
+
 ```bash
 npm install -g cc-usage-cli
 ```
@@ -76,7 +79,7 @@ Results are cached for 60 seconds at `~/.cache/cc-usage-cli/`.
 
 ## Requirements
 
-- Node.js ≥ 18
+- Node.js 22.23.4+ (22.x) or 24.22.1+ (24.x)
 - Active Claude Code subscription (Pro, Max, or Team)
 - Claude Code must have been run at least once (to generate credentials)
 
@@ -88,3 +91,26 @@ The OAuth access token expires after ~1 hour. Claude Code automatically refreshe
 
 MIT
 
+
+## Runtime and dependency security
+
+The supported Node.js minimums match the [October 21, 2026 security
+release](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases).
+Node 18 and 20 are retired from this project's support and CI because they are
+end-of-life upstream; users on those lines must upgrade before updating this CLI.
+Node 26 is not yet in the supported/tested matrix. This is an intentional runtime
+compatibility change, not a change to credential handling or API requests.
+`engines` documents support and can produce npm warnings; it does not update or
+enforce the security of an already installed runtime.
+
+CI tests both exact supported minimums on Linux and Node 24.22.1 on macOS and
+Windows, including installation and help/version checks of the packed CLI using
+an empty temporary home. Update these minimums when upstream security fixes
+require it, and keep local runtimes on the latest supported patch.
+
+`brace-expansion` is a development-only lint dependency; the lockfile uses 5.0.12
+to address CVE-2026-102276, CVE-2026-102278 and CVE-2026-102277. The published CLI
+has no runtime npm dependencies. Run `npm audit` and `npm audit --omit=dev`
+separately to distinguish tooling findings from production dependencies. A clean
+audit does not prove that every runtime vulnerability is unreachable or that an
+installed Node.js binary is patched.
